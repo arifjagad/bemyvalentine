@@ -25,10 +25,4 @@ export const dateLocations: DateLocation[] = [
     description: "Exploring beautiful artworks while holding hands",
     icon: "frame"
   },
-  {
-    id: 5,
-    name: "Dance Class Together",
-    description: "Learning to dance and staying close to each other",
-    icon: "music"
-  }
 ];

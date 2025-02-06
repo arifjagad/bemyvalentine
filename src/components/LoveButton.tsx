@@ -15,7 +15,7 @@ export const LoveButton: React.FC<LoveButtonProps> = ({ onClick, text, variant =
       whileTap={{ scale: 0.95 }}
       className={`
         px-6 py-3 rounded-full font-bold text-lg shadow-lg
-        flex items-center gap-2
+        flex items-center justify-center gap-2 
         ${variant === 'accept' 
           ? 'bg-pink-500 hover:bg-pink-600 text-white' 
           : 'bg-gray-200 hover:bg-gray-300 text-gray-700'}

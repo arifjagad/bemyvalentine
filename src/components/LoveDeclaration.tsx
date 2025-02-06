@@ -7,9 +7,10 @@ export const LoveDeclaration: React.FC = () => {
   const [showClickMe, setShowClickMe] = useState(false);
   const [showHearts, setShowHearts] = useState(false);
   const [heartCount, setHeartCount] = useState(0);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   React.useEffect(() => {
-    const timer = setTimeout(() => setShowClickMe(true), 3000);
+    const timer = setTimeout(() => setShowClickMe(true), 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -17,12 +18,11 @@ export const LoveDeclaration: React.FC = () => {
     const viewportWidth = window.innerWidth;
     const isMobile = viewportWidth <= 768;
 
-    // Adjust the maximum distance based on screen size
-    const maxDistance = isMobile ? 20 : 40;
+    const maxDistance = isMobile ? 50 : 60;
     const minScale = isMobile ? 0.2 : 0.4;
     const maxScale = isMobile ? 0.4 : 0.8;
 
-    return Array.from({ length: count }, (_, i) => ({
+    return Array.from({ length: count }, () => ({
       x: (Math.random() * maxDistance * 2 - maxDistance),
       y: (Math.random() * maxDistance * 2 - maxDistance),
       scale: Math.random() * (maxScale - minScale) + minScale,
@@ -31,9 +31,13 @@ export const LoveDeclaration: React.FC = () => {
   };
 
   const handleClick = () => {
+    if (isButtonDisabled) return;
+    
+    setIsButtonDisabled(true);
     setShowHearts(true);
     setHeartCount(prev => prev + 24);
-    toast("My heart is full of you!! 💖", {
+    
+    toast("My heart overflows! 💖", {
       icon: '💝',
       position: 'top-center',
       style: {
@@ -45,6 +49,10 @@ export const LoveDeclaration: React.FC = () => {
         padding: '16px 24px',
       },
     });
+
+    setTimeout(() => {
+      setIsButtonDisabled(false);
+    }, 80 * 24 + 350);
   };
 
   const heartPositions = generateHeartPositions(heartCount);
@@ -73,23 +81,29 @@ export const LoveDeclaration: React.FC = () => {
         <AnimatePresence>
           {(showClickMe || showHearts) && (
             <motion.button
+              key="love-button"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: isButtonDisabled ? 1 : 1.1 }}
+              whileTap={{ scale: isButtonDisabled ? 1 : 0.9 }}
               onClick={handleClick}
-              className="px-6 py-3 bg-pink-500 text-white rounded-full font-bold text-lg
-                       shadow-lg cursor-pointer z-10 mt-4 md:mt-8"
+              disabled={isButtonDisabled}
+              className={`px-6 py-3 bg-pink-500 text-white rounded-full font-bold text-lg
+                       shadow-lg cursor-pointer z-10 mt-4 md:mt-8 
+                       ${isButtonDisabled ? 'opacity-50 cursor-not-allowed bg-gray-400' : ''}`}
             >
-              Click Me! 💝
+              Love Explosion 💘
             </motion.button>
           )}
 
           {showHearts && (
-            <div className="absolute inset-0 pointer-events-none">
+            <motion.div
+              key="hearts-container"
+              className="absolute inset-0 pointer-events-none"
+            >
               {heartPositions.map((pos, index) => (
                 <motion.div
-                  key={`${index}-${heartCount}`}
+                  key={`heart-${heartCount}-${index}`}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{
                     opacity: 1,
@@ -111,7 +125,7 @@ export const LoveDeclaration: React.FC = () => {
                   />
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>

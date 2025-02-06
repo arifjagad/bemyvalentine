@@ -20,4 +20,4 @@ export interface Outfit {
   description: string;
 }
 
-export type Stage = 'initial' | 'accepted' | 'location' | 'outfit' | 'declaration';
+export type Stage = 'initial' | 'accepted' | 'location' | 'outfit' | 'summary' | 'declaration';
