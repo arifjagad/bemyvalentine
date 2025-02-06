@@ -12,7 +12,13 @@ interface QuestionModalProps {
 export const QuestionModal: React.FC<QuestionModalProps> = ({ question, onAccept, onReject }) => {
   return (
     <AnimatePresence>
-      <img src={question.imageUrl} alt="Shy Cat" className="mb-4 mx-auto w-56" />
+      <img 
+        src={question.imageUrl} 
+        alt="Shy Cat" 
+        className="mb-4 mx-auto w-56" 
+        loading="lazy"
+        style={{ maxWidth: '100%', height: 'auto' }}
+      />
       <motion.div
         key="question-modal"
         initial={{ scale: 0 }}
