@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LoveButton } from './LoveButton';
 import { Question } from '../types';
+import { questions } from '../data/questions';
+
+const preloadImages = () => {
+  questions.forEach(question => {
+    const img = new Image();
+    img.src = question.imageUrl;
+  });
+};
 
 interface QuestionModalProps {
   question: Question;
@@ -10,15 +18,26 @@ interface QuestionModalProps {
 }
 
 export const QuestionModal: React.FC<QuestionModalProps> = ({ question, onAccept, onReject }) => {
+  useEffect(() => {
+    preloadImages();
+  }, []);
+
   return (
     <AnimatePresence>
-      <img 
-        src={question.imageUrl} 
-        alt="Shy Cat" 
-        className="mb-4 mx-auto w-56" 
-        loading="lazy"
-        style={{ maxWidth: '100%', height: 'auto' }}
-      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <img 
+          src={question.imageUrl} 
+          alt="Shy Cat" 
+          className="mb-4 mx-auto w-56" 
+          loading="eager"
+          style={{ maxWidth: '100%', height: 'auto' }}
+        />
+      </motion.div>
       <motion.div
         key="question-modal"
         initial={{ scale: 0 }}
