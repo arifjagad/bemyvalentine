@@ -5,7 +5,7 @@ export const outfits: Outfit[] = [
     id: 1,
     name: "Korean Style",
     imageUrl: "/images/outfit/korean-style.jpg",
-    description: "Trendy and vibrant, perfect for a casual outing."
+    description: "Trendy and vibrant, perfect for a casual."
   },
   {
     id: 2,
@@ -23,6 +23,6 @@ export const outfits: Outfit[] = [
     id: 4,
     name: "Semi Formal",
     imageUrl: "/images/outfit/semi-formal.jpg",
-    description: "Stylish yet relaxed, perfect for semi-formal occasions."
+    description: "Stylish yet relaxed, perfect for semi-formal."
   }
 ];
