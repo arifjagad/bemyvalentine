@@ -44,7 +44,8 @@ export const OutfitSelection: React.FC<OutfitSelectionProps> = ({ outfits, selec
               <img
                 src={outfit.imageUrl}
                 alt={outfit.name}
-                className="w-full h-64 object-cover"
+                className="w-full h-full object-cover"
+                loading="lazy"
               />
               <div className="p-6 bg-white flex-grow">
                 <h3 className="text-xl font-bold text-pink-600 mb-2">{outfit.name}</h3>

@@ -3,26 +3,26 @@ import { Outfit } from '../types';
 export const outfits: Outfit[] = [
   {
     id: 1,
-    name: "Elegant Evening",
-    imageUrl: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=800",
-    description: "A sophisticated outfit perfect for our romantic"
+    name: "Korean Style",
+    imageUrl: "/images/outfit/korean-style.jpg",
+    description: "Trendy and vibrant, perfect for a casual outing."
   },
   {
     id: 2,
-    name: "Casual Chic",
-    imageUrl: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800",
-    description: "Stylish yet comfortable for our special day together"
+    name: "Casual Modern",
+    imageUrl: "/images/outfit/casual-modern.jpg",
+    description: "A blend of comfort and style for everyday wear."
   },
   {
     id: 3,
-    name: "Summer Beachwear",
-    imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800",
-    description: "Perfect for a beach day or a casual outing"
+    name: "Formal",
+    imageUrl: "/images/outfit/formal.jpg",
+    description: "Classic and elegant, ideal for formal events."
   },
   {
     id: 4,
-    name: "Winter Cozy",
-    imageUrl: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=800",
-    description: "Warm and stylish for a winter date"
+    name: "Semi Formal",
+    imageUrl: "/images/outfit/semi-formal.jpg",
+    description: "Stylish yet relaxed, perfect for semi-formal occasions."
   }
 ];

@@ -41,7 +41,8 @@ export const DateSummary: React.FC<DateSummaryProps> = ({
               <img
                 src={selectedOutfit.imageUrl}
                 alt={selectedOutfit.name}
-                className="w-full h-64 object-cover rounded-lg mb-4"
+                loading="lazy"
+                className="w-full h-full object-cover rounded-lg mb-4"
               />
               <h4 className="text-xl font-semibold text-pink-500 mb-2">
                 {selectedOutfit.name}
@@ -61,7 +62,7 @@ export const DateSummary: React.FC<DateSummaryProps> = ({
             onClick={onComplete}
             className="w-full px-8 py-3 bg-pink-500 text-white rounded-full font-bold text-lg"
           >
-            Continue to Love Declaration 💕
+            Continue 💕
           </motion.button>
         </div>
       </div>
